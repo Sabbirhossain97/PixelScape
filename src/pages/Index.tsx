@@ -6,7 +6,7 @@ import { CategorySlider } from "@/components/CategorySlider";
 import { Pagination } from "@/components/Pagination";
 import { ImageModal } from "@/components/ImageModal";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { Loader } from "lucide-react";
+import { Loader, Sparkles, Image as ImageIcon } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 
 const API_KEY = "51329157-16a7d6c093b9d3ce7267bf729";
@@ -83,41 +83,58 @@ const Index = () => {
   const totalPages = data ? Math.ceil(data.totalHits / perPage) : 0;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
-      <div className="container mx-auto px-4 py-8">
-        {/* Header */}
-        <div className="flex justify-between items-center mb-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/20 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/10 transition-all duration-700">
+      {/* Animated Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-pink-400/10 to-yellow-400/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-green-400/5 to-blue-400/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+      </div>
+
+      <div className="container mx-auto px-4 py-8 relative z-10">
+        {/* Enhanced Header */}
+        <div className="flex justify-between items-center mb-12">
           <div className="text-center flex-1">
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
-              PixelScape
-            </h1>
-            <p className="text-gray-600 dark:text-gray-400 text-lg">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="p-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-lg animate-pulse-glow">
+                <ImageIcon className="w-8 h-8 text-white" />
+              </div>
+              <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                PixelScape
+              </h1>
+              <Sparkles className="w-8 h-8 text-purple-500 animate-float" />
+            </div>
+            <p className="text-muted-foreground text-xl font-medium tracking-wide">
               Discover stunning images from around the world
             </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mt-4 rounded-full"></div>
           </div>
           <ThemeToggle isDarkMode={isDarkMode} onToggle={setIsDarkMode} />
         </div>
 
-        {/* Search Bar */}
-        <div className="mb-8">
+        {/* Enhanced Search Bar */}
+        <div className="mb-12">
           <SearchBar onSearch={handleSearch} />
         </div>
 
-        {/* Category Slider */}
-        <div className="mb-8">
+        {/* Enhanced Category Slider */}
+        <div className="mb-12">
           <CategorySlider onCategorySelect={handleCategorySelect} selectedCategory={selectedCategory} />
         </div>
 
-        {/* Results Info */}
+        {/* Enhanced Results Info */}
         {data && (
-          <div className="mb-6 flex justify-between items-center">
-            <p className="text-gray-600 dark:text-gray-400">
-              Found {data.totalHits.toLocaleString()} images
-            </p>
+          <div className="mb-8 flex justify-between items-center">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <p className="text-muted-foreground font-medium">
+                Found <span className="text-foreground font-bold">{data.totalHits.toLocaleString()}</span> amazing images
+              </p>
+            </div>
             <select
               value={perPage}
               onChange={(e) => setPerPage(Number(e.target.value))}
-              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+              className="px-4 py-2 border border-border rounded-xl bg-card/80 backdrop-blur-sm text-foreground font-medium shadow-lg hover:shadow-xl transition-all duration-300 focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500"
             >
               <option value={12}>12 per page</option>
               <option value={20}>20 per page</option>
@@ -126,18 +143,32 @@ const Index = () => {
           </div>
         )}
 
-        {/* Loading State */}
+        {/* Enhanced Loading State */}
         {isLoading && (
-          <div className="flex justify-center items-center py-20">
-            <Loader className="w-8 h-8 animate-spin text-blue-600" />
-            <span className="ml-2 text-gray-600 dark:text-gray-400">Loading images...</span>
+          <div className="flex flex-col justify-center items-center py-32">
+            <div className="relative">
+              <Loader className="w-12 h-12 animate-spin text-blue-600" />
+              <div className="absolute inset-0 w-12 h-12 border-4 border-purple-200 dark:border-purple-800 rounded-full animate-pulse"></div>
+            </div>
+            <span className="mt-6 text-muted-foreground text-lg font-medium animate-pulse">
+              Loading amazing images...
+            </span>
+            <div className="flex gap-1 mt-4">
+              <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce"></div>
+              <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+              <div className="w-2 h-2 bg-pink-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+            </div>
           </div>
         )}
 
-        {/* Error State */}
+        {/* Enhanced Error State */}
         {error && (
-          <div className="text-center py-20">
-            <p className="text-red-500 text-lg">Error loading images. Please try again.</p>
+          <div className="text-center py-32">
+            <div className="p-6 bg-destructive/10 border border-destructive/20 rounded-2xl max-w-md mx-auto">
+              <p className="text-destructive text-lg font-medium">
+                Oops! Something went wrong. Please try again.
+              </p>
+            </div>
           </div>
         )}
 
@@ -146,21 +177,24 @@ const Index = () => {
           <ImageGrid images={data.hits} onImageClick={setSelectedImage} />
         )}
 
-        {/* No Results */}
+        {/* Enhanced No Results */}
         {data && data.hits.length === 0 && (
-          <div className="text-center py-20">
-            <p className="text-gray-600 dark:text-gray-400 text-lg">
-              No images found. Try a different search term.
-            </p>
+          <div className="text-center py-32">
+            <div className="p-8 bg-muted/30 border border-border/50 rounded-2xl max-w-md mx-auto backdrop-blur-sm">
+              <ImageIcon className="w-16 h-16 text-muted-foreground mx-auto mb-4 opacity-50" />
+              <p className="text-muted-foreground text-lg font-medium">
+                No images found. Try a different search term.
+              </p>
+            </div>
           </div>
         )}
 
-        {/* Pagination */}
+        {/* Enhanced Pagination */}
         {data && data.hits.length > 0 && (
-          <div className="mt-12">
+          <div className="mt-16">
             <Pagination
               currentPage={currentPage}
-              totalPages={Math.min(totalPages, 50)} // Pixabay API limit
+              totalPages={Math.min(totalPages, 50)}
               onPageChange={handlePageChange}
             />
           </div>
