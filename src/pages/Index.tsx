@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { SearchBar } from "@/components/SearchBar";
 import { ImageGrid } from "@/components/ImageGrid";
@@ -6,7 +5,8 @@ import { CategorySlider } from "@/components/CategorySlider";
 import { Pagination } from "@/components/Pagination";
 import { ImageModal } from "@/components/ImageModal";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { Loader, Sparkles, Image as ImageIcon } from "lucide-react";
+import { ScrollToTop } from "@/components/ScrollToTop";
+import { Loader, Image as ImageIcon, Sparkles } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 
 const API_KEY = "51329157-16a7d6c093b9d3ce7267bf729";
@@ -207,6 +207,9 @@ const Index = () => {
             onClose={() => setSelectedImage(null)}
           />
         )}
+
+        {/* Scroll to Top Button */}
+        <ScrollToTop />
       </div>
     </div>
   );

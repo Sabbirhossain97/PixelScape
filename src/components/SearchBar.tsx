@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Search, Sparkles } from "lucide-react";
+import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -30,7 +30,7 @@ export const SearchBar = ({ onSearch }: SearchBarProps) => {
             placeholder="Search for beautiful images..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full pl-14 pr-32 py-6 text-lg bg-transparent border-0 rounded-full focus:ring-0 focus:outline-none placeholder:text-muted-foreground/70 font-medium"
+            className="w-full pl-14 pr-24 py-6 text-lg bg-transparent border-0 rounded-full focus:ring-0 focus:outline-none placeholder:text-muted-foreground/70 font-medium"
           />
           
           {/* Search Icon */}
@@ -41,9 +41,8 @@ export const SearchBar = ({ onSearch }: SearchBarProps) => {
           {/* Enhanced Search Button */}
           <Button
             type="submit"
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-full px-8 py-3 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-0"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-full px-6 py-3 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-0"
           >
-            <Sparkles className="w-4 h-4 mr-2" />
             Search
           </Button>
         </div>
