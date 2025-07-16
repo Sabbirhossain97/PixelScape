@@ -45,7 +45,7 @@ export const CategorySlider = ({ onCategorySelect, selectedCategory }: CategoryS
         variant="ghost"
         size="sm"
         onClick={scrollLeft}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm border border-border/50 rounded-full w-10 h-10 p-0 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent hover:scale-110 shadow-lg"
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm border border-border/50 rounded-full w-10 h-10 p-0 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent hover:scale-110"
       >
         <ChevronLeft className="w-4 h-4" />
       </Button>
@@ -54,12 +54,12 @@ export const CategorySlider = ({ onCategorySelect, selectedCategory }: CategoryS
         variant="ghost"
         size="sm"
         onClick={scrollRight}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm border border-border/50 rounded-full w-10 h-10 p-0 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent hover:scale-110 shadow-lg"
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm border border-border/50 rounded-full w-10 h-10 p-0 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-accent hover:scale-110"
       >
         <ChevronRight className="w-4 h-4" />
       </Button>
 
-      <div 
+      <div
         ref={scrollRef}
         className="flex space-x-3 p-6 overflow-x-auto scrollbar-hide scroll-smooth"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
@@ -69,10 +69,10 @@ export const CategorySlider = ({ onCategorySelect, selectedCategory }: CategoryS
             key={category.value}
             variant={selectedCategory === category.value ? "default" : "outline"}
             className={`
-              flex-shrink-0 shadow-lg px-8 py-3 rounded-full transition-all duration-500 font-medium text-sm
+              flex-shrink-0 shadow-md px-8 py-3 rounded-full transition-all duration-500 font-medium text-sm
               transform hover:scale-105 hover:-translate-y-1
-              ${selectedCategory === category.value 
-                ? 'bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white shadow-2xl border-0' 
+              ${selectedCategory === category.value
+                ? 'bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white border-0'
                 : 'bg-background/60 backdrop-blur-sm hover:bg-accent/80 border-border/50 text-foreground hover:shadow-lg hover:border-accent'
               }
               ${index === 0 ? '' : ''}
