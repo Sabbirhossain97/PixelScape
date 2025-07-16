@@ -40,8 +40,7 @@ export const CategorySlider = ({ onCategorySelect, selectedCategory }: CategoryS
   };
 
   return (
-    <div className="relative w-full group">
-      {/* Left Navigation Button */}
+    <div className="relative max-w-5xl mx-auto group">
       <Button
         variant="ghost"
         size="sm"
@@ -51,7 +50,6 @@ export const CategorySlider = ({ onCategorySelect, selectedCategory }: CategoryS
         <ChevronLeft className="w-4 h-4" />
       </Button>
 
-      {/* Right Navigation Button */}
       <Button
         variant="ghost"
         size="sm"
@@ -71,13 +69,13 @@ export const CategorySlider = ({ onCategorySelect, selectedCategory }: CategoryS
             key={category.value}
             variant={selectedCategory === category.value ? "default" : "outline"}
             className={`
-              flex-shrink-0 px-8 py-3 rounded-full transition-all duration-500 font-medium text-sm
+              flex-shrink-0 shadow-lg px-8 py-3 rounded-full transition-all duration-500 font-medium text-sm
               transform hover:scale-105 hover:-translate-y-1
               ${selectedCategory === category.value 
-                ? 'bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white shadow-2xl border-0 animate-pulse-glow' 
+                ? 'bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white shadow-2xl border-0' 
                 : 'bg-background/60 backdrop-blur-sm hover:bg-accent/80 border-border/50 text-foreground hover:shadow-lg hover:border-accent'
               }
-              ${index === 0 ? 'animate-float' : ''}
+              ${index === 0 ? '' : ''}
             `}
             onClick={() => onCategorySelect(category.value)}
           >

@@ -19,7 +19,7 @@ export const SearchBar = ({ onSearch }: SearchBarProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="relative max-w-3xl mx-auto group">
+    <form onSubmit={handleSubmit} className="relative max-w-5xl mx-auto group">
       <div className="relative">
         {/* Glowing background effect */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -30,7 +30,7 @@ export const SearchBar = ({ onSearch }: SearchBarProps) => {
             placeholder="Search for beautiful images..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full pl-14 pr-24 py-6 text-lg bg-transparent border-0 rounded-full focus:ring-0 focus:outline-none placeholder:text-muted-foreground/70 font-medium"
+            className="w-full pl-14 pr-28 sm:pr-32 py-6 text-lg bg-transparent border-0 rounded-full focus:ring-0 focus:outline-none placeholder:text-muted-foreground/70 font-medium"
           />
           
           {/* Search Icon */}

@@ -6,11 +6,11 @@ import { Pagination } from "@/components/Pagination";
 import { ImageModal } from "@/components/ImageModal";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ScrollToTop } from "@/components/ScrollToTop";
-import { Loader, Image as ImageIcon, Sparkles } from "lucide-react";
+import { Loader, Image as ImageIcon } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 
-const API_KEY = "51329157-16a7d6c093b9d3ce7267bf729";
-const API_URL = "https://pixabay.com/api/";
+const API_KEY = import.meta.env.VITE_API_KEY;
+const API_URL = import.meta.env.VITE_API_URL;
 
 interface PixabayImage {
   id: number;
@@ -51,11 +51,11 @@ const Index = () => {
     const response = await fetch(
       `${API_URL}?key=${API_KEY}&q=${encodeURIComponent(query)}&image_type=photo&orientation=all&category=all&min_width=640&min_height=480&per_page=${perPage}&page=${currentPage}&safesearch=true`
     );
-    
+
     if (!response.ok) {
       throw new Error('Failed to fetch images');
     }
-    
+
     return response.json();
   };
 
@@ -92,9 +92,8 @@ const Index = () => {
       </div>
 
       <div className="container mx-auto px-4 py-8 relative z-10">
-        {/* Enhanced Header */}
-        <div className="flex justify-between items-center mb-12">
-          <div className="text-center flex-1">
+        <div className="flex justify-between items-center mb-12 relative">
+          <div className="text-center flex-1 pt-10 sm:pt-0">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="p-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-lg animate-pulse-glow">
                 <ImageIcon className="w-8 h-8 text-white" />
@@ -102,7 +101,6 @@ const Index = () => {
               <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                 PixelScape
               </h1>
-              <Sparkles className="w-8 h-8 text-purple-500 animate-float" />
             </div>
             <p className="text-muted-foreground text-xl font-medium tracking-wide">
               Discover stunning images from around the world
@@ -112,23 +110,17 @@ const Index = () => {
           <ThemeToggle isDarkMode={isDarkMode} onToggle={setIsDarkMode} />
         </div>
 
-        {/* Enhanced Search Bar */}
         <div className="mb-12">
           <SearchBar onSearch={handleSearch} />
-        </div>
-
-        {/* Enhanced Category Slider */}
-        <div className="mb-12">
           <CategorySlider onCategorySelect={handleCategorySelect} selectedCategory={selectedCategory} />
         </div>
 
-        {/* Enhanced Results Info */}
         {data && (
           <div className="mb-8 flex justify-between items-center">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
               <p className="text-muted-foreground font-medium">
-                Found <span className="text-foreground font-bold">{data.totalHits.toLocaleString()}</span> amazing images
+                Found <span className="text-foreground font-bold">{data.totalHits.toLocaleString()}</span> images
               </p>
             </div>
             <select

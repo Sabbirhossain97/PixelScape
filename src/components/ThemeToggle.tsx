@@ -13,7 +13,7 @@ export const ThemeToggle = ({ isDarkMode, onToggle }: ThemeToggleProps) => {
       variant="outline"
       size="sm"
       onClick={() => onToggle(!isDarkMode)}
-      className="rounded-full p-2 border-gray-200 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm"
+      className="rounded-full absolute top-0 right-0 p-2 border-gray-200 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm"
     >
       {isDarkMode ? (
         <Sun className="w-5 h-5 text-yellow-500" />
