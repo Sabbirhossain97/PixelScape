@@ -6,6 +6,7 @@ import { Pagination } from "@/components/Pagination";
 import { ImageModal } from "@/components/ImageModal";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { Footer } from "@/components/Footer";
 import { Loader, Image as ImageIcon } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 
@@ -203,6 +204,9 @@ const Index = () => {
         {/* Scroll to Top Button */}
         <ScrollToTop />
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
